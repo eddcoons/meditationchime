@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 855.14 855.14">
+	<defs>
+		<style>.cls-1{opacity:0.75;}.cls-2{fill:url(#linear-gradient);}</style>
+		<linearGradient id="linear-gradient" x1="1188.62" y1="1150.85" x2="1188.62" y2="295.31" gradientTransform="translate(1769.12 58.95) rotate(133.32)" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#8cdde9"/>
+			<stop offset="1" stop-color="#ff538c"/>
+		</linearGradient>
+	</defs>
+	<title>circle</title>
+		<g class="cls-1">
+			<path class="cls-2" d="M116.36,134.08c161.84-171.6,433.1-179.55,604.7-17.71S900.6,549.46,738.77,721.06,305.68,900.6,134.08,738.77-45.47,305.68,116.36,134.08ZM579.6,571c79.07-83.83,75.19-216.36-8.65-295.42s-216.36-75.18-295.42,8.66-75.18,216.35,8.66,295.41S500.54,654.78,579.6,571Z"/>
+		</g>
+</svg>
