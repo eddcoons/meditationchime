@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Meditation Chime</title>
   <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+  <link href="NoSleep.js">
 </head>
 <body>
 	<div class="svg-wrapper" id="svg-wrapper">
@@ -33,6 +34,12 @@
 			<label>Chime Interval</label>
 			<input id="interval" value="1"> <span>minutes</span>
 		</div>
+		<div class="meditation-option">
+			<label>Meditation Focus</label>
+			<select>
+				<option>Breathing</option>
+			</select>
+		</div>
 		<button onclick="startMeditation()" class="start-button">Start Meditation</button>
 	</div>
 
@@ -43,6 +50,8 @@
 
 
 	<script type="text/javascript">
+        let noSleep = new NoSleep();
+
 		function playSound() {
 			const audio = document.getElementById("chimeOne");
 			audio.play();
@@ -51,6 +60,7 @@
 		function endMeditation() {
 			const audio = document.getElementById("endChime");
 			audio.play();
+			noSleep.disable();
 			resetUI();
 		}
 
@@ -58,6 +68,7 @@
 
 			playSound();
 
+			noSleep.enable();
 
 			let totalMinutes = document.getElementById("total-length").value * 60000;
 			let intervals = (document.getElementById("interval").value) * 60000;
