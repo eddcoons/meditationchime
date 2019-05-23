@@ -7,42 +7,75 @@
 	<script type="text/javascript" src="NoSleep.js"></script>
 </head>
 <body>
-	<div class="svg-wrapper" id="svg-wrapper">
-
-			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 855.14 855.14" height="100%" class="svg" id="svg">
-	<defs>
-		<linearGradient id="linear-gradient" x1="1188.62" y1="1150.85" x2="1188.62" y2="295.31" gradientTransform="translate(1769.12 58.95) rotate(133.32)" gradientUnits="userSpaceOnUse">
-			<stop class="stop-1" offset="0" stop-color="#8cdde9"/>
-			<stop class="stop-2" offset="1" stop-color="#ff538c"/>
-		</linearGradient>
-	</defs>
-	<title>circle</title>
-		<g class="cls-svg-wrapper" id="cls-svg-wrapper">
-			<path class="cls-circle" d="M116.36,134.08c161.84-171.6,433.1-179.55,604.7-17.71S900.6,549.46,738.77,721.06,305.68,900.6,134.08,738.77-45.47,305.68,116.36,134.08ZM579.6,571c79.07-83.83,75.19-216.36-8.65-295.42s-216.36-75.18-295.42,8.66-75.18,216.35,8.66,295.41S500.54,654.78,579.6,571Z"/>
-		</g>
-	</svg>
-		
-	</div>
-
 
 	<div class="meditation-settings" id="meditation-settings">
-		<div class="meditation-option">
-			<label>Meditation Length</label>
-			<input id="total-length" value="3"> <span>minutes</span>
+		<div>
+			<div class="meditation-option">
+				<label>Meditation Length</label>
+				<input id="total-length" value="3"> <span>minutes</span>
+			</div>
+			<div class="meditation-option">
+				<label>Chime Interval</label>
+				<input id="interval" value="1"> <span>minutes</span>
+			</div>
+			<button onclick="startMeditation()" class="start-button">Start Meditation</button>
 		</div>
-		<div class="meditation-option">
-			<label>Chime Interval</label>
-			<input id="interval" value="1"> <span>minutes</span>
-		</div>
-		<div class="meditation-option">
+
+		<div class="meditation-option meditation-options-wrapper">
 			<label>Meditation Focus</label>
-			<select>
-				<option>Breathing</option>
-			</select>
+			<div class="focus-options">
+				<div class="focus-option">Breathing</div>
+				<div class="focus-option v2">Grounding in the Body</div>
+				<div class="focus-option">Hearing</div>
+				<div class="focus-option v2">How Do You Speak to Yourself?</div>
+				<div class="focus-option">Mental Noting</div>
+				<div class="focus-option">Counting</div>
+				<div class="focus-option v2">Working with Thoughts</div>
+				<div class="focus-option">Balance</div>
+				<div class="focus-option">Distractions</div>
+				<div class="focus-option v2">Working with Challenges</div>
+				<div class="focus-option">Sensation</div>
+				<div class="focus-option">Body Scan</div>
+				<div class="focus-option">Mental Notation</div>
+				<div class="focus-option">Positive Emotions</div>
+				<div class="focus-option">Difficult Emotions</div>
+				<div class="focus-option">Changing Emotions</div>
+				<div class="focus-option v2">Landscape of Experience</div>
+				<div class="focus-option v2">Seeing the Good</div>
+				<div class="focus-option v2">Opening the Heart</div>
+				<div class="focus-option v3">Loving Kindness Toward Others</div>
+				<div class="focus-option v3">Loving Kindness Toward All Beings</div>
+				<div class="focus-option">Compassion</div>
+				<div class="focus-option v2">Interconnectedness</div>
+				<div class="focus-option">Responsibility Transfer</div>
+				<div class="focus-option">Funeral</div>
+				<div class="focus-option">Visualization</div>
+				<div class="focus-option">Triumph</div>
+				<div class="focus-option v2">Sensing the Body</div>
+				<div class="focus-option v2">Reflection on Presence</div>
+				<div class="focus-option">Orienting</div>
+				<div class="focus-option v3">Beginning & Ending the Day</div>
+				<div class="focus-option">Expanding Awareness</div>
+			</div>
 		</div>
-		<button onclick="startMeditation()" class="start-button">Start Meditation</button>
 	</div>
 
+	<div class="svg-wrapper" id="svg-wrapper">
+
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 855.14 855.14" height="100%" class="svg" id="svg">
+			<defs>
+				<linearGradient id="linear-gradient" x1="1188.62" y1="1150.85" x2="1188.62" y2="295.31" gradientTransform="translate(1769.12 58.95) rotate(133.32)" gradientUnits="userSpaceOnUse">
+					<stop class="stop-1" offset="0" stop-color="#8cdde9"/>
+					<stop class="stop-2" offset="1" stop-color="#ff538c"/>
+				</linearGradient>
+			</defs>
+			<title>circle</title>
+			<g class="cls-svg-wrapper" id="cls-svg-wrapper">
+				<path class="cls-circle" d="M116.36,134.08c161.84-171.6,433.1-179.55,604.7-17.71S900.6,549.46,738.77,721.06,305.68,900.6,134.08,738.77-45.47,305.68,116.36,134.08ZM579.6,571c79.07-83.83,75.19-216.36-8.65-295.42s-216.36-75.18-295.42,8.66-75.18,216.35,8.66,295.41S500.54,654.78,579.6,571Z"/>
+			</g>
+		</svg>
+
+	</div>
 
 	<audio src="chime-1.wav" id="chimeOne"></audio>
 	<audio src="end-chime.wav" id="endChime"></audio>
@@ -114,9 +147,9 @@
 	body {
 		font-family: 'Barlow', sans-serif;
 		display: flex;
+		flex-direction: column;
 		width: 100vw;
 		height: 100vh;
-		/*align-content: space-between;*/
 		justify-content: center;
 		margin: 0;
 	}
@@ -159,18 +192,20 @@
 	}
 
 	.meditation-settings {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		/*display: flex;*/
+		/*flex-direction: column;*/
+		/*justify-content: center;*/
+		display: grid;
+		grid-template-columns: 1fr 2fr;
 		margin-right: 5rem;
 		align-self: center; 
-		width: 20%;
+		width: 90%;
 	}
 	.meditation-option {
 	    padding: 2rem 0;
     	font-size: 1.2rem;
     	color: #004E5F;
-    	text-align: right;
+    	/*text-align: right;*/
 	}
 
 	.meditation-option input {
@@ -188,6 +223,35 @@
 		background:  #004E5F;
 		color: #fff;
 		transition: all .3s ease-in-out;
+	}
+
+	.focus-options {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, 100px);
+		grid-auto-rows: 50px;
+		grid-auto-flow: dense;
+		/*width: 50%;*/
+	}
+	.focus-option {
+		border: 1px solid #8cdde9;
+		/*border: 1px solid #ffffff;*/
+		/*background: #8cdde9;*/
+		opacity: .6;
+		/*color: #ffffff;*/
+		color: #8cdde9;
+		font-size: .9rem;
+		text-align: center;
+		padding: .2rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.focus-option.v2 {
+		grid-column: span 2;
+	}
+	.focus-option.v3 {
+		grid-column: span 3;
 	}
 
 	.start-button {
