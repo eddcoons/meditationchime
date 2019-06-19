@@ -30,40 +30,41 @@
 				</span>
 			</label>
 			<div class="focus-options hidden" id="focus-options">
-				<div class="focus-option">Breathing</div>
-				<div class="focus-option v2">Grounding in the Body</div>
-				<div class="focus-option">Hearing</div>
-				<div class="focus-option v2">How Do You Speak to Yourself?</div>
-				<div class="focus-option">Mental Noting</div>
-				<div class="focus-option">Counting</div>
-				<div class="focus-option v2">Working with Thoughts</div>
-				<div class="focus-option">Balance</div>
-				<div class="focus-option">Distractions</div>
-				<div class="focus-option v2">Working with Challenges</div>
-				<div class="focus-option">Sensation</div>
-				<div class="focus-option">Body Scan</div>
-				<div class="focus-option">Mental Notation</div>
-				<div class="focus-option">Positive Emotions</div>
-				<div class="focus-option">Difficult Emotions</div>
-				<div class="focus-option">Changing Emotions</div>
-				<div class="focus-option v2">Landscape of Experience</div>
-				<div class="focus-option v2">Seeing the Good</div>
-				<div class="focus-option v2">Opening the Heart</div>
-				<div class="focus-option v3">Loving Kindness Toward Others</div>
-				<div class="focus-option v3">Loving Kindness Toward All Beings</div>
-				<div class="focus-option">Compassion</div>
-				<div class="focus-option v2">Interconnectedness</div>
-				<div class="focus-option">Responsibility Transfer</div>
-				<div class="focus-option">Funeral</div>
-				<div class="focus-option">Visualization</div>
-				<div class="focus-option">Triumph</div>
-				<div class="focus-option v2">Sensing the Body</div>
-				<div class="focus-option v2">Reflection on Presence</div>
-				<div class="focus-option">Orienting</div>
-				<div class="focus-option v3">Beginning & Ending the Day</div>
-				<div class="focus-option">Expanding Awareness</div>
+				<div class="focus-option" id="breathing" onclick="selectFocus('breathing')">Breathing</div>
+				<div class="focus-option v2" id="grounding" onclick="selectFocus('grounding')">Grounding in the Body</div>
+				<div class="focus-option" id="hearing" onclick="selectFocus('hearing')">Hearing</div>
+				<div class="focus-option v2" id="speaking" onclick="selectFocus('speaking')">How Do You Speak to Yourself?</div>
+				<div class="focus-option" id="mental-note" onclick="selectFocus('mental-note')">Mental Noting</div>
+				<div class="focus-option" id="counting" onclick="selectFocus('counting')">Counting</div>
+				<div class="focus-option v2" id="thoughts" onclick="selectFocus('thoughts')">Working with Thoughts</div>
+				<div class="focus-option" id="balance" onclick="selectFocus('balance')">Balance</div>
+				<div class="focus-option" id="distractions" onclick="selectFocus('distractions')">Distractions</div>
+				<div class="focus-option v2" id="challenges" onclick="selectFocus('challenges')">Working with Challenges</div>
+				<div class="focus-option" id="sensation" onclick="selectFocus('sensation')">Sensation</div>
+				<div class="focus-option" id="body-scan" onclick="selectFocus('body-scan')">Body Scan</div>
+				<div class="focus-option" id="notation" onclick="selectFocus('notation')">Mental Notation</div>
+				<div class="focus-option" id="positive" onclick="selectFocus('positive')">Positive Emotions</div>
+				<div class="focus-option" id="difficult" onclick="selectFocus('difficult')">Difficult Emotions</div>
+				<div class="focus-option" id="changing" onclick="selectFocus('changing')">Changing Emotions</div>
+				<div class="focus-option v2" id="landscape" onclick="selectFocus('landscape')">Landscape of Experience</div>
+				<div class="focus-option v2" id="seeing-good" onclick="selectFocus('seeing-good')">Seeing the Good</div>
+				<div class="focus-option v2" id="opening" onclick="selectFocus('opening')">Opening the Heart</div>
+				<div class="focus-option v3" id="loving-kindness" onclick="selectFocus('loving-kindness')">Loving Kindness Toward Others</div>
+				<div class="focus-option v3" id="all-beings" onclick="selectFocus('all-beings')">Loving Kindness Toward All Beings</div>
+				<div class="focus-option" id="compassion" onclick="selectFocus('compassion')">Compassion</div>
+				<div class="focus-option v2" id="interconnectedness" onclick="selectFocus('interconnectedness')">Interconnectedness</div>
+				<div class="focus-option" id="responsibility" onclick="selectFocus('responsibility')">Responsibility Transfer</div>
+				<div class="focus-option" id="funeral" onclick="selectFocus('funeral')">Funeral</div>
+				<div class="focus-option" id="visualization" onclick="selectFocus('visualization')">Visualization</div>
+				<div class="focus-option" id="triumph" onclick="selectFocus('triumph')">Triumph</div>
+				<div class="focus-option v2" id="sensing" onclick="selectFocus('sensing')">Sensing the Body</div>
+				<div class="focus-option v2" id="reflection" onclick="selectFocus('reflection')">Reflection on Presence</div>
+				<div class="focus-option" id="orienting" onclick="selectFocus('orienting')">Orienting</div>
+				<div class="focus-option v3" id="begin-end" onclick="selectFocus('begin-end')">Beginning & Ending the Day</div>
+				<div class="focus-option" id="expanding" onclick="selectFocus('expanding')">Expanding Awareness</div>
 			</div>
 			<div onclick="startMeditation()" class="start-button start-button-moved" id="start-button">Start Meditation</div>
+			<div id="like_button_container"></div>
 		</div>
 	</div>
 
@@ -86,7 +87,6 @@
 
 	<audio src="chime-1.wav" id="chimeOne"></audio>
 	<audio src="end-chime.wav" id="endChime"></audio>
-
 
 
 	<script type="text/javascript">
@@ -155,6 +155,15 @@
                 document.getElementById("start-button").classList.add("start-button-moved");
 			}
         }
+
+       function selectFocus(focusId) {
+           if( document.getElementById(focusId).classList.contains('focused')) {
+               document.getElementById(focusId).classList.remove("focused");
+           } else {
+               document.getElementById(focusId).classList.add("focused");
+           }
+
+       }
 
 		
 	</script>
@@ -280,6 +289,10 @@
 		transition: .3s all ease-in-out;
 	}
 
+	.toggle-icon:hover {
+		cursor: pointer;
+	}
+
 	.focus-option {
 		border: 1px solid #004E5F;
 		/*border: 1px solid #ffffff;*/
@@ -310,11 +323,16 @@
 		transition: .5s all ease-in-out;
 	}
 
+	.focused {
+		background: #004E5F;
+		color: #ffffff;
+	}
+
 	.start-button {
 		/*align-self: flex-end;*/
 		border: none;
 		color: #004E5F;
-		width: 10%;
+		width: 18%;
 		padding-bottom: .5rem;
 		margin-top: 1rem;
 		font-size: 1.2rem;
@@ -335,7 +353,8 @@
 		left: 0;
 		right: 100%;
 		bottom: 0;
-		background: #004E5F;
+		/*background: #004E5F;*/
+		background-image: linear-gradient(to right bottom, #8cdde9, gold);
 		height: 4px;
 		-webkit-transition-property: right;
 		transition-property: right;
@@ -376,14 +395,14 @@
 
 	@keyframes slide-out {
 		100% {
-			transform: translateX(800px);
+			transform: translateX(0px);
 			opacity: 0;
 		}
 	}
 
 	@keyframes slide-in {
 		100% {
-			transform: translateX(0);
+			transform: translateX(-50%);
 			width: 100%;
 		}
 	}
