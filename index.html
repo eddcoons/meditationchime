@@ -18,12 +18,18 @@
 				<label>Chime Interval</label>
 				<input id="interval" value="1"> <span>minutes</span>
 			</div>
-			<button onclick="startMeditation()" class="start-button">Start Meditation</button>
 		</div>
 
 		<div class="meditation-option meditation-options-wrapper">
-			<label>Meditation Focus</label>
-			<div class="focus-options">
+			<label onclick="toggleFocus()">
+				Meditation Focus
+				<span class="toggle-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.89 19.71" class="toggle-icon-svg toggle-icon-rotated" id="toggle-icon-svg">
+						<path d="M21.65,18c.52,1,.16,1.76-.81,1.76A3.47,3.47,0,0,1,18.14,18L11.74,6c-.52-1-1.36-1-1.87,0L3.7,17.93a3.39,3.39,0,0,1-2.65,1.78c-1,0-1.33-.8-.82-1.77L8.62,1.77A3.14,3.14,0,0,1,10.76,0a3.21,3.21,0,0,1,2.16,1.76Z"/>
+					</svg>
+				</span>
+			</label>
+			<div class="focus-options hidden" id="focus-options">
 				<div class="focus-option">Breathing</div>
 				<div class="focus-option v2">Grounding in the Body</div>
 				<div class="focus-option">Hearing</div>
@@ -57,6 +63,7 @@
 				<div class="focus-option v3">Beginning & Ending the Day</div>
 				<div class="focus-option">Expanding Awareness</div>
 			</div>
+			<button onclick="startMeditation()" class="start-button start-button-moved" id="start-button">Start Meditation</button>
 		</div>
 	</div>
 
@@ -137,6 +144,18 @@
 			document.getElementById("meditation-settings").classList.remove("slide-out");
 		}
 
+		function toggleFocus() {
+			if( document.getElementById("focus-options").classList.contains('hidden')) {
+                document.getElementById("focus-options").classList.remove("hidden");
+                document.getElementById("toggle-icon-svg").classList.remove("toggle-icon-rotated");
+                document.getElementById("start-button").classList.remove("start-button-moved");
+			} else {
+                document.getElementById("focus-options").classList.add("hidden");
+                document.getElementById("toggle-icon-svg").classList.add("toggle-icon-rotated");
+                document.getElementById("start-button").classList.add("start-button-moved");
+			}
+        }
+
 		
 	</script>
 	
@@ -147,7 +166,7 @@
 	body {
 		font-family: 'Barlow', sans-serif;
 		display: flex;
-		flex-direction: column;
+		/*flex-direction: column;*/
 		width: 100vw;
 		height: 100vh;
 		justify-content: center;
@@ -155,7 +174,7 @@
 	}
 
 	.svg-wrapper {
-		transform: translateX(-50%);
+		transform: translateX(50%);
 		display: flex;
 		width: 80%;
 	}
@@ -196,8 +215,8 @@
 		/*flex-direction: column;*/
 		/*justify-content: center;*/
 		display: grid;
-		grid-template-columns: 1fr 2fr;
-		margin-right: 5rem;
+		grid-template-rows: .5fr 2fr;
+		margin-left: 5rem;
 		align-self: center; 
 		width: 90%;
 	}
@@ -230,21 +249,51 @@
 		grid-template-columns: repeat(auto-fill, 100px);
 		grid-auto-rows: 50px;
 		grid-auto-flow: dense;
+		grid-gap: 10px;
+		opacity: 1;
 		/*width: 50%;*/
+		transform: scaleX(1);
+		transform-origin: left;
+		transition: 1s all ease-in-out;
 	}
+
+	.hidden {
+		opacity: 0;
+		transform: scaleX(0);
+		/*grid-auto-rows: 0;*/
+		transition: 1s all ease-in-out;
+	}
+
+	.toggle-icon {
+		width: 10%;
+		margin-left: .5rem;
+		fill: #004E5F;
+	}
+
+	.toggle-icon-svg {
+		width: 12px;
+		transition: .3s all ease-in-out;
+	}
+
+	.toggle-icon-rotated {
+		transform: rotate(180deg);
+		transition: .3s all ease-in-out;
+	}
+
 	.focus-option {
-		border: 1px solid #8cdde9;
+		border: 1px solid #004E5F;
 		/*border: 1px solid #ffffff;*/
 		/*background: #8cdde9;*/
 		opacity: .6;
 		/*color: #ffffff;*/
-		color: #8cdde9;
+		color: #004E5F;
 		font-size: .9rem;
 		text-align: center;
 		padding: .2rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		transition: .5s all ease-in-out;
 	}
 
 	.focus-option.v2 {
@@ -254,15 +303,22 @@
 		grid-column: span 3;
 	}
 
+	.focus-option:hover {
+		cursor: pointer;
+		background: #004E5F;
+		color: #ffffff;
+		transition: .5s all ease-in-out;
+	}
+
 	.start-button {
 		align-self: flex-end;
 		border: none;
 		color: #004E5F;
-		width: 40%;
+		width: 20%;
 		padding: .5rem;
 		margin-top: 1rem;
 		font-size: 1.2rem;
-		text-align: center;
+		text-align: left;
 		border-radius: 10px;
 		position: relative;
 		transition: all .3s ease-in-out;
@@ -296,6 +352,10 @@
 	  transform: scaleY(1);
 	}
 
+	.start-button-moved {
+		transform: translateY(-22rem);
+		transition: 1s all .5s ease-in-out;
+	}
 
 
 	@keyframes pulse {
