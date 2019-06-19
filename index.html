@@ -63,7 +63,7 @@
 				<div class="focus-option v3">Beginning & Ending the Day</div>
 				<div class="focus-option">Expanding Awareness</div>
 			</div>
-			<button onclick="startMeditation()" class="start-button start-button-moved" id="start-button">Start Meditation</button>
+			<div onclick="startMeditation()" class="start-button start-button-moved" id="start-button">Start Meditation</div>
 		</div>
 	</div>
 
@@ -311,45 +311,45 @@
 	}
 
 	.start-button {
-		align-self: flex-end;
+		/*align-self: flex-end;*/
 		border: none;
 		color: #004E5F;
-		width: 20%;
-		padding: .5rem;
+		width: 10%;
+		padding-bottom: .5rem;
 		margin-top: 1rem;
 		font-size: 1.2rem;
 		text-align: left;
-		border-radius: 10px;
+		display: inline-block;
+		vertical-align: middle;
+		-webkit-transform: perspective(1px) translateZ(0);
+		transform: perspective(1px) translateZ(0);
+		box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 		position: relative;
+		overflow: hidden;
 		transition: all .3s ease-in-out;
 	}
-
 	.start-button:before {
-		  content: "";
-		  position: absolute;
-		  z-index: -1;
-		  top: 0;
-		  left: 0;
-		  right: 0;
-		  bottom: 0;
-		  border-radius: 10px;
-		  background: #004E5F;
-		  -webkit-transform: scaleY(0);
-		  transform: scaleY(0);
-		  -webkit-transform-origin: 50% 100%;
-		  transform-origin: 50% 100%;
-		  transition: all .3s ease-out;
-	}
-
-	.start-button:hover, .start-button:focus, .start-button:active {
-	  color: #fff;
-	  cursor: pointer;
-	  outline: none;
-	  background: none;
+		content: "";
+		position: absolute;
+		z-index: -1;
+		left: 0;
+		right: 100%;
+		bottom: 0;
+		background: #004E5F;
+		height: 4px;
+		-webkit-transition-property: right;
+		transition-property: right;
+		-webkit-transition-duration: 0.3s;
+		transition-duration: 0.3s;
+		-webkit-transition-timing-function: ease-out;
+		transition-timing-function: ease-out;
 	}
 	.start-button:hover:before, .start-button:focus:before, .start-button:active:before {
-	  -webkit-transform: scaleY(1);
-	  transform: scaleY(1);
+		right: 0;
+	}
+
+	.start-button:hover {
+		cursor: pointer;
 	}
 
 	.start-button-moved {
