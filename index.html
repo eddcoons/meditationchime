@@ -126,8 +126,6 @@
 
 			}
 
-
-
 			const endMeditationChime = setTimeout(endMeditation, totalMinutes);
 			
 			transitionUI();
@@ -175,7 +173,6 @@
 	body {
 		font-family: 'Barlow', sans-serif;
 		display: flex;
-		/*flex-direction: column;*/
 		width: 100vw;
 		height: 100vh;
 		justify-content: center;
@@ -220,9 +217,6 @@
 	}
 
 	.meditation-settings {
-		/*display: flex;*/
-		/*flex-direction: column;*/
-		/*justify-content: center;*/
 		display: grid;
 		grid-template-rows: .5fr 2fr;
 		margin-left: 5rem;
@@ -233,7 +227,6 @@
 	    padding: 2rem 0;
     	font-size: 1.2rem;
     	color: #004E5F;
-    	/*text-align: right;*/
 	}
 
 	.meditation-option input {
@@ -260,7 +253,6 @@
 		grid-auto-flow: dense;
 		grid-gap: 10px;
 		opacity: 1;
-		/*width: 50%;*/
 		transform: scaleX(1);
 		transform-origin: left;
 		transition: 1s all ease-in-out;
@@ -269,7 +261,6 @@
 	.hidden {
 		opacity: 0;
 		transform: scaleX(0);
-		/*grid-auto-rows: 0;*/
 		transition: 1s all ease-in-out;
 	}
 
@@ -295,10 +286,7 @@
 
 	.focus-option {
 		border: 1px solid #004E5F;
-		/*border: 1px solid #ffffff;*/
-		/*background: #8cdde9;*/
 		opacity: .6;
-		/*color: #ffffff;*/
 		color: #004E5F;
 		font-size: .9rem;
 		text-align: center;
@@ -329,7 +317,6 @@
 	}
 
 	.start-button {
-		/*align-self: flex-end;*/
 		border: none;
 		color: #004E5F;
 		width: 18%;
@@ -353,7 +340,6 @@
 		left: 0;
 		right: 100%;
 		bottom: 0;
-		/*background: #004E5F;*/
 		background-image: linear-gradient(to right bottom, #8cdde9, gold);
 		height: 4px;
 		-webkit-transition-property: right;
@@ -444,22 +430,60 @@
 			align-items: center;
 			margin-top: 5rem;
 			margin-right: 0;
+			grid-template-rows: .5fr .5fr;
 		}
 
 		.meditation-option {
-			text-align: center;
-			font-size: 2rem;
+			font-size: 3rem;
 		}
 
 		.meditation-option input {
-			font-size: 2rem;
+			font-size: 3rem;
+		}
+
+		.focus-options {
+			grid-template-columns: repeat(auto-fill, 150px);
+			grid-auto-rows: 100px;
+			width: 90%;
+		}
+
+		.focus-option {
+			font-size: 1.2rem;
+			opacity: .8;
+		}
+
+		.hidden {
+			opacity: 0;
+			transform: scaleX(0);
+			transition: 1s all ease-in-out;
+			display: none;
 		}
 
 		.start-button {
 			align-self: center;
-			font-size: 2rem;
+			font-size: 3rem;
+			width: 80%;
+		}
+		.start-button-moved {
+			transform: translateY(2rem);
+		}
+
+		@keyframes slide-out {
+			100% {
+				transform: translateY(-60%);
+				opacity: 0;
+			}
+		}
+
+		@keyframes slide-in {
+			100% {
+				transform: translateY(-20%);
+				width: 100%;
+			}
 		}
 	}
+
+
 
 
 
