@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Meditation Chime</title>
+  <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+  <link rel="manifest" href="./manifest.json">
+	<!--<script type="text/javascript" src="NoSleep.js"></script>-->
+	<script type="text/javascript" src="js/app.js"></script>
+</head>
+<body>
+	<div class="svg-wrapper" id="svg-wrapper">
+
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 855.14 855.14" height="100%" class="svg" id="svg">
+	<defs>
+		<linearGradient id="linear-gradient" x1="1188.62" y1="1150.85" x2="1188.62" y2="295.31" gradientTransform="translate(1769.12 58.95) rotate(133.32)" gradientUnits="userSpaceOnUse">
+			<stop class="stop-1" offset="0" stop-color="#8cdde9"/>
+			<stop class="stop-2" offset="1" stop-color="#ff538c"/>
+		</linearGradient>
+	</defs>
+	<title>circle</title>
+		<g class="cls-svg-wrapper" id="cls-svg-wrapper">
+			<path class="cls-circle" d="M116.36,134.08c161.84-171.6,433.1-179.55,604.7-17.71S900.6,549.46,738.77,721.06,305.68,900.6,134.08,738.77-45.47,305.68,116.36,134.08ZM579.6,571c79.07-83.83,75.19-216.36-8.65-295.42s-216.36-75.18-295.42,8.66-75.18,216.35,8.66,295.41S500.54,654.78,579.6,571Z"/>
+		</g>
+	</svg>
+		
+	</div>
+
+
+	<div class="meditation-settings" id="meditation-settings">
+		<div class="meditation-option">
+			<label>Meditation Length</label>
+			<input id="total-length" value="3"> <span>minutes</span>
+		</div>
+		<div class="meditation-option">
+			<label>Chime Interval</label>
+			<input id="interval" value="1"> <span>minutes</span>
+		</div>
+		<div class="meditation-option">
+			<label>Meditation Focus</label>
+			<select>
+				<option>Breathing</option>
+			</select>
+		</div>
+		<button onclick="startMeditation()" class="start-button">Start Meditation</button>
+	</div>
+
+
+	<audio src="chime-1.wav" id="chimeOne"></audio>
+	<audio src="end-chime.wav" id="endChime"></audio>
+
+	<script type="text/javascript">
+        // let noSleep = new NoSleep();
+
+		function playSound() {
+			const audio = document.getElementById("chimeOne");
+			audio.play();
+		}
+
+		function endMeditation() {
+			const audio = document.getElementById("endChime");
+			audio.play();
+			// noSleep.disable();
+			resetUI();
+		}
+
+		function startMeditation() {
+
+			playSound();
+
+			// noSleep.enable();
+
+			let totalMinutes = document.getElementById("total-length").value * 60000;
+			let intervals = (document.getElementById("interval").value) * 60000;
+			let timesToRun = (Math.floor(document.getElementById("total-length").value / (document.getElementById("interval").value))-1);
+			let timesRan = 0;
+
+			if(intervals > 1) {
+				const chimeTimer = setInterval(function() {
+					playSound();
+					timesRan++;
+					if(timesRan >= timesToRun) {
+						clearInterval(chimeTimer);
+					}
+				}, intervals);
+
+			}
+
+
+
+			const endMeditationChime = setTimeout(endMeditation, totalMinutes);
+			
+			transitionUI();
+
+		}
+
+		function transitionUI() {
+			document.getElementById("svg-wrapper").classList.add("slide-in");
+			document.getElementById("meditation-settings").classList.add("slide-out");
+		}
+
+		function resetUI() {
+			document.getElementById("svg-wrapper").classList.remove("slide-in");
+			document.getElementById("meditation-settings").classList.remove("slide-out");
+		}
+
+		
+	</script>
+	
+</body>
+</html>
+
+<style type="text/css">
+	body {
+		font-family: 'Barlow', sans-serif;
+		display: flex;
+		width: 100vw;
+		height: 100vh;
+		/*align-content: space-between;*/
+		justify-content: center;
+		margin: 0;
+	}
+
+	.svg-wrapper {
+		transform: translateX(-50%);
+		display: flex;
+		width: 80%;
+	}
+
+	.svg {
+		transform: scale(.9);
+		flex: 1;
+		animation: pulse 15s ease-in-out infinite; 
+	}
+
+	.offset-x {
+		transform: translateX(-50%) scale(1);
+	}
+
+	.cls-svg-wrapper {
+		opacity:0.75;
+	}
+	.cls-circle { 
+		fill:url(#linear-gradient);
+	}
+	.stop-1 {
+  		animation: change-color-1 5s ease-in-out infinite alternate;
+	}
+	.stop-2 {
+	  animation: change-color-2 5s ease-in-out infinite alternate;
+	}
+
+	.slide-out {
+		animation: slide-out 1s ease-in forwards;
+		width: 0;
+	}
+	.slide-in {
+		animation: slide-in 1s ease-out forwards;
+	}
+
+	.meditation-settings {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin-right: 5rem;
+		align-self: center; 
+		width: 20%;
+	}
+	.meditation-option {
+	    padding: 2rem 0;
+    	font-size: 1.2rem;
+    	color: #004E5F;
+    	text-align: right;
+	}
+
+	.meditation-option input {
+		border: none;
+		font-size: 1.2rem;
+    	color: #004E5F;
+    	text-align: center;
+    	width: 15%;
+    	transition: all .3s ease-in-out;
+    	border-radius: 10px;
+	}
+
+	.meditation-option input:focus {
+		outline: none;
+		background:  #004E5F;
+		color: #fff;
+		transition: all .3s ease-in-out;
+	}
+
+	.start-button {
+		align-self: flex-end;
+		border: none;
+		color: #004E5F;
+		width: 40%;
+		padding: .5rem;
+		margin-top: 1rem;
+		font-size: 1.2rem;
+		text-align: center;
+		border-radius: 10px;
+		position: relative;
+		transition: all .3s ease-in-out;
+	}
+
+	.start-button:before {
+		  content: "";
+		  position: absolute;
+		  z-index: -1;
+		  top: 0;
+		  left: 0;
+		  right: 0;
+		  bottom: 0;
+		  border-radius: 10px;
+		  background: #004E5F;
+		  -webkit-transform: scaleY(0);
+		  transform: scaleY(0);
+		  -webkit-transform-origin: 50% 100%;
+		  transform-origin: 50% 100%;
+		  transition: all .3s ease-out;
+	}
+
+	.start-button:hover, .start-button:focus, .start-button:active {
+	  color: #fff;
+	  cursor: pointer;
+	  outline: none;
+	  background: none;
+	}
+	.start-button:hover:before, .start-button:focus:before, .start-button:active:before {
+	  -webkit-transform: scaleY(1);
+	  transform: scaleY(1);
+	}
+
+
+
+	@keyframes pulse {
+		50% {
+			transform: scale(1);
+		}
+	}
+
+	@keyframes change-color-1 {
+	  0% {stop-color: #8cdde9;}
+	  100% {stop-color: gold;}
+	}
+
+	@keyframes change-color-2 {
+	  0% {stop-color: #ff538c;}
+	  100% {stop-color: #8cdde9;}
+	}
+
+	@keyframes slide-out {
+		100% {
+			transform: translateX(800px);
+			opacity: 0;
+		}
+	}
+
+	@keyframes slide-in {
+		100% {
+			transform: translateX(0);
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 1350px) {
+		.svg-wrapper {
+			width: 70%;
+		}
+
+		.meditation-settings {
+			width: 30%;
+		}
+	}
+
+	@media (max-width: 1050px) {
+		.svg-wrapper {
+			width: 50%;
+		}
+
+		.meditation-settings {
+			width: 50%;
+		}
+	}
+
+	@media (max-width: 1049px) {
+		body {
+			flex-direction: column;
+		}
+
+		.svg-wrapper {
+			width: 100%;
+			order: 2;
+			transform: translateX(0) translateY(60%);
+		}
+
+		.meditation-settings {
+			width: 100%;
+			order: 1;
+			align-items: center;
+			margin-top: 5rem;
+			margin-right: 0;
+		}
+
+		.meditation-option {
+			text-align: center;
+			font-size: 2rem;
+		}
+
+		.meditation-option input {
+			font-size: 2rem;
+		}
+
+		.start-button {
+			align-self: center;
+			font-size: 2rem;
+		}
+	}
+
+
+
+
+</style>
+

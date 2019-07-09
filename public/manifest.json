@@ -1,0 +1,22 @@
+{
+  "short_name" : "Meditation",
+  "name" : "Mediation Chime",
+  "description" : "Set a meditation timer with chime intervals.",
+  "start_url" : "index.html",
+  "scope" : "/",
+  "display" : "fullscreen",
+  "icons" : [
+    {
+      "src" : "img/app-icon-192.png",
+      "type" : "image/png",
+      "sizes" : "192x192"
+    },
+    {
+      "src" : "img/app-icon-512.png",
+      "type" : "image/png",
+      "sizes" : "512x512"
+    }
+  ]
+
+
+}
