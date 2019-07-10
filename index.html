@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Meditation Chime</title>
   <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
-  <link href="NoSleep.js">
+	<script type="text/javascript" src="NoSleep.js"></script>
 </head>
 <body>
 	<div class="svg-wrapper" id="svg-wrapper">
@@ -75,7 +75,7 @@
 			let timesToRun = (Math.floor(document.getElementById("total-length").value / (document.getElementById("interval").value))-1);
 			let timesRan = 0;
 
-			if(intervals !== 0) {
+			if(intervals > 1) {
 				const chimeTimer = setInterval(function() {
 					playSound();
 					timesRan++;
