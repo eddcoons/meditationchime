@@ -21,7 +21,7 @@
 			<path class="cls-circle" d="M116.36,134.08c161.84-171.6,433.1-179.55,604.7-17.71S900.6,549.46,738.77,721.06,305.68,900.6,134.08,738.77-45.47,305.68,116.36,134.08ZM579.6,571c79.07-83.83,75.19-216.36-8.65-295.42s-216.36-75.18-295.42,8.66-75.18,216.35,8.66,295.41S500.54,654.78,579.6,571Z"/>
 		</g>
 	</svg>
-		
+
 	</div>
 
 
@@ -34,12 +34,6 @@
 			<label>Chime Interval</label>
 			<input id="interval" value="1"> <span>minutes</span>
 		</div>
-		<div class="meditation-option">
-			<label>Meditation Focus</label>
-			<select>
-				<option>Breathing</option>
-			</select>
-		</div>
 		<button onclick="startMeditation()" class="start-button">Start Meditation</button>
 	</div>
 
@@ -50,7 +44,6 @@
 
 
 	<script type="text/javascript">
-        let noSleep = new NoSleep();
 
 		function playSound() {
 			const audio = document.getElementById("chimeOne");
@@ -60,7 +53,6 @@
 		function endMeditation() {
 			const audio = document.getElementById("endChime");
 			audio.play();
-			noSleep.disable();
 			resetUI();
 		}
 
@@ -68,7 +60,6 @@
 
 			playSound();
 
-			noSleep.enable();
 
 			let totalMinutes = document.getElementById("total-length").value * 60000;
 			let intervals = (document.getElementById("interval").value) * 60000;
@@ -89,7 +80,7 @@
 
 
 			const endMeditationChime = setTimeout(endMeditation, totalMinutes);
-			
+
 			transitionUI();
 
 		}
@@ -104,9 +95,9 @@
 			document.getElementById("meditation-settings").classList.remove("slide-out");
 		}
 
-		
+
 	</script>
-	
+
 </body>
 </html>
 
@@ -130,7 +121,7 @@
 	.svg {
 		transform: scale(.9);
 		flex: 1;
-		animation: pulse 15s ease-in-out infinite; 
+		animation: pulse 15s ease-in-out infinite;
 	}
 
 	.offset-x {
@@ -140,7 +131,7 @@
 	.cls-svg-wrapper {
 		opacity:0.75;
 	}
-	.cls-circle { 
+	.cls-circle {
 		fill:url(#linear-gradient);
 	}
 	.stop-1 {
@@ -163,7 +154,7 @@
 		flex-direction: column;
 		justify-content: center;
 		margin-right: 5rem;
-		align-self: center; 
+		align-self: center;
 		width: 20%;
 	}
 	.meditation-option {
